@@ -1,150 +1,68 @@
-# 🛡️ FLYSAFEAI — Drone Warning Level Prediction Using Machine Learning  
+# 🛡️ FLYSAFEAI — Drone Warning Level Prediction Using Machine Learning
 
-> 🚀 *Turning flight data into safety intelligence — one prediction at a time.*
-
----
-
-## 📘 Overview  
-
-**FLYSAFEAI** is a data-driven machine learning project that predicts **drone warning levels** based on telemetry and performance parameters.  
-A high warning level indicates that the drone should be **grounded immediately** to prevent potential crashes or malfunctions.  
-
-This project blends **statistical analysis**, **feature engineering**, and **machine learning** to develop interpretable and highly accurate models that ensure **drone flight safety**.
+> 🚀 *Turning flight data into safety intelligence by solving real-world data challenges.*
 
 ---
 
-## 🎯 Objectives  
+## 📘 Overview
 
-- Identify **key drone features** influencing flight risk.  
-- Develop **probabilistic (Logistic Regression)** and **predictive (Random Forest)** models.  
-- Enable **early risk detection** through real-time analytics.  
-- Improve **drone operational safety** using AI insights.  
+**FLYSAFEAI** is a data-driven project that predicts drone warning levels to prevent equipment failure and ensure operational safety. A high warning level indicates that a drone must be grounded immediately.
 
----
-
-## 📊 Dataset Summary  
-
-| Property | Description |
-|-----------|-------------|
-| **Records** | 5,725 |
-| **Features** | 9 |
-| **Target Variable** | (categorical levels: 0, 1, 2, 3) |
-| **Source** | Simulated drone telemetry dataset |
-
-**Feature List:**  
-`['voltage_v', 'voltage_filtered_v', 'current_a', 'current_filtered_a', 'discharged_mah', 'remaining', 'scale', 'load', 'ram_usage']`
+This project demonstrates a complete, end-to-end machine learning workflow, from initial data analysis to final model evaluation. A key challenge was a **severe class imbalance** in the dataset, where critical (but rare) warning signals were easily missed by standard models. This analysis showcases how using the **SMOTE (Synthetic Minority Over-sampling Technique)** can transform a misleadingly "accurate" model into a genuinely effective and reliable safety tool.
 
 ---
 
-## 🧹 Data Preprocessing & EDA  
+## 🎯 Project Highlights
 
-**Steps Performed:**
-- Checked and handled missing values, duplicates, and outliers.  
-- Explored data distributions and correlation patterns.  
-- Visualized feature relationships with the warning variable.  
-
-**Key Insights:**  
-- `voltage_filtered_v` and `remaining` show the strongest correlation with warning levels.  
-- Voltage instability and low remaining battery power are early indicators of flight risk.  
-
+-   **Problem Solving:** Identified and solved a critical class imbalance problem, a common challenge in real-world datasets.
+-   **Model Improvement:** Dramatically improved model performance on minority classes, boosting the Random Forest F1-score from a failing grade to a perfect **1.00**.
+-   **Comparative Analysis:** Evaluated both a probabilistic model (Logistic Regression) for interpretability and an ensemble model (Random Forest) for predictive power.
+-   **Feature Engineering:** Used **Recursive Feature Elimination (RFE)** to identify the most critical predictors of drone failure.
 
 ---
 
-## 🔍 Feature Selection  
+## ⚙️ The Challenge: Severe Class Imbalance
 
-Used **Recursive Feature Elimination (RFE)** with Logistic Regression to identify the most impactful predictors.
+Initial models achieved high accuracy (~99%), but this was misleading. The models were simply predicting the majority class while completely failing to identify the rare, critical warning levels, resulting in F1-scores of **0.00** for those classes.
 
-**Selected Features:**
-['voltage_v','voltage_filtered','current_a','current_filtered_ai','remaining']
-> These parameters directly relate to the drone’s **battery health and electrical load**, which strongly influence its performance and risk level.
+### The Solution: Applying SMOTE
 
----
-
-## ⚙️ Model Development  
-
-### 🔸 Logistic Regression (Probabilistic Model)
-- Captures the **likelihood** of each warning level.  
-- Highlights **individual feature influence** on outcomes.  
-- **Accuracy:** 98.7%
-
-> Provides interpretability — useful for safety-critical decisions.
+By applying SMOTE to the training data, we generated synthetic samples of the minority classes. This created a balanced dataset, allowing the models to learn the patterns of rare events effectively.
 
 ---
 
-### 🔸 Random Forest (Predictive Model)
-- Handles **non-linear relationships** and feature interactions.  
-- Offers **feature importance ranking** and robust prediction.  
-- **Accuracy:** 99.7%
+## 📈 Final Model Performance (After SMOTE)
 
-> Excels in classification performance and generalization.
+The results after balancing the data show a massive improvement, with the Random Forest model achieving a perfect score on the test set.
 
----
+| Model               | Type          | Accuracy | Weighted F1-Score | Key Strength                            |
+| ------------------- | ------------- | -------- | ----------------- | --------------------------------------- |
+| Logistic Regression | Probabilistic | 96%      | 0.97              | Good recall & high interpretability     |
+| **Random Forest** | **Predictive** | **100%** | **1.00** | **Perfect classification & robustness** |
 
-## 📈 Model Comparison  
 
-| Model | Type | Accuracy | F1-Score | Strength |
-|--------|------|-----------|-----------|-----------|
-| Logistic Regression | Probabilistic | 98.7% | 0.98 | Interpretable & Explainable |
-| Random Forest | Predictive | **99.7%** | **1.00** | Handles Complex Data & Imbalance |
+### Key Predictive Features
 
+The Random Forest model identified **`voltage_filtered_v`** and **`remaining`** battery as the most significant predictors of a potential failure.
 
 ---
 
-## 💡 Insights & Impact  
 
-- **Battery voltage stability** and **current regulation** are the most significant risk factors.  
-- Machine learning enables **real-time monitoring** of drone health.  
-- FLYSAFEAI demonstrates how **AI can prevent accidents** by providing **early warnings** before system failure.  
+## 🧰 Tech Stack
 
-> 🧭 *From reactive maintenance to proactive safety — powered by data science.*
-
----
-
-## 🧠 Why FLYSAFEAI Stands Out  
-
-✅ **End-to-End AI Pipeline:** Raw data → EDA → Feature Selection → Modeling → Evaluation  
-✅ **Dual Modeling Approach:** Logistic Regression (interpretability) + Random Forest (performance)  
-✅ **Real-World Use Case:** Focused on **drone safety** — an emerging and relevant AI application  
-✅ **High Accuracy + Explainability:** Balances trust and performance  
-✅ **Clean, professional structure:** Recruiter-friendly and reproducible  
-
-> 💬 *Unlike many academic projects, FLYSAFEAI demonstrates technical mastery **and** domain relevance — a combination employers value highly.*
+| Category                | Tools / Libraries                                  |
+| ----------------------- | -------------------------------------------------- |
+| **Language** | Python                                             |
+| **Core Libraries** | pandas, numpy, scikit-learn                        |
+| **Data Imbalance** | `imblearn` (for SMOTE)                             |
+| **Visualisation** | seaborn, matplotlib                                |
+| **Development** | Jupyter Notebook                                   |
+| **Version Control** | Git & GitHub                                       |
 
 ---
 
-## 🧰 Tech Stack  
+## 🔧 Future Enhancements
 
-| Category | Tools / Libraries |
-|-----------|------------------|
-| **Language** | Python |
-| **Libraries** | pandas, numpy, seaborn, matplotlib, scikit-learn |
-| **Models** | Logistic Regression, Random Forest |
-| **Development Environment** | Jupyter Notebook |
-| **Version Control** | Git & GitHub |
-
----
-
-## 🔧 Future Enhancements  
-
-- Apply **SMOTE** or **class weighting** for better minority-class handling.  
-- Experiment with **XGBoost, LightGBM, or CatBoost**.  
-- Integrate **real-time telemetry streaming** for live risk prediction.  
-- Deploy an **interactive dashboard** using Streamlit or Dash for live visual analytics.  
-
----
-
-## 🏁 Results Summary  
-
-| Metric | Logistic Regression | Random Forest |
-|--------|---------------------|---------------|
-| Accuracy | 98.7% | **99.7%** |
-| Precision | 0.98 | **0.99** |
-| Recall | 0.97 | **1.00** |
-| F1 Score | 0.98 | **1.00** |
-
-
-
-
-
-
- 
+-   **Hyperparameter Tuning:** Use `GridSearchCV` or `RandomizedSearchCV` to further optimize the Random Forest model.
+-   **Explore Other Models:** Experiment with gradient boosting models like XGBoost or LightGBM, which often perform well on tabular data.
+-   **Deployment:** Wrap the final model in a simple API using Flask or FastAPI and create an interactive web app with Streamlit to predict drone warnings in real-time.
