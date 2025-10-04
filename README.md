@@ -28,7 +28,7 @@ This project blends **statistical analysis**, **feature engineering**, and **mac
 |-----------|-------------|
 | **Records** | 5,725 |
 | **Features** | 9 |
-| **Target Variable** | `warning` (categorical levels: 0, 1, 2, 3) |
+| **Target Variable** | (categorical levels: 0, 1, 2, 3) |
 | **Source** | Simulated drone telemetry dataset |
 
 **Feature List:**  
