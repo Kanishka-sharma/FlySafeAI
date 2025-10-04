@@ -46,7 +46,19 @@ The results after balancing the data show a massive improvement, with the Random
 The Random Forest model identified **`voltage_filtered_v`** and **`remaining`** battery as the most significant predictors of a potential failure.
 
 ---
+##  M️odel Validation
 
+To ensure the model's near-perfect score wasn't a fluke from a single `train_test_split`, I performed rigorous **k-fold cross-validation**. This process repeatedly tests the model on different subsets of the data to verify its stability and predictive power.
+
+The results confirmed the model's exceptional robustness:
+
+| Metric                          | Value      |
+| ------------------------------- | ---------- |
+| **Validation Folds** | 20         |
+| **Average Weighted F1-Score** | **0.9975** |
+| **Standard Deviation** | **0.0041** |
+
+A high average score with a very low standard deviation proves that the model is **consistently accurate and reliable**, solidifying its readiness for a real-world application.
 
 ## 🧰 Tech Stack
 
