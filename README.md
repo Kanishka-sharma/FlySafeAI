@@ -1,10 +1,10 @@
-# 🛡️ FLYSAFEAI — Drone Warning Level Prediction Using Machine Learning
+# FLYSAFEAI — Drone Warning Level Prediction Using Machine Learning
 
-> 🚀 *Turning flight data into safety intelligence by solving real-world data challenges.*
+> *Turning flight data into safety intelligence by solving real-world data challenges.*
 
 ---
 
-## 📘 Overview
+## Overview
 
 **FLYSAFEAI** is a data-driven project that predicts drone warning levels to prevent equipment failure and ensure operational safety. A high warning level indicates that a drone must be grounded immediately.
 
@@ -12,7 +12,7 @@ This project demonstrates a complete, end-to-end machine learning workflow, from
 
 ---
 
-## 🎯 Project Highlights
+## Project Highlights
 
 -   **Problem Solving:** Identified and solved a critical class imbalance problem, a common challenge in real-world datasets.
 -   **Model Improvement:** Dramatically improved model performance on minority classes, boosting the Random Forest F1-score from a failing grade to a perfect **1.00**.
@@ -21,7 +21,7 @@ This project demonstrates a complete, end-to-end machine learning workflow, from
 
 ---
 
-## ⚙️ The Challenge: Severe Class Imbalance
+## The Challenge: Severe Class Imbalance
 
 Initial models achieved high accuracy (~99%), but this was misleading. The models were simply predicting the majority class while completely failing to identify the rare, critical warning levels, resulting in F1-scores of **0.00** for those classes.
 
@@ -31,7 +31,7 @@ By applying SMOTE to the training data, we generated synthetic samples of the mi
 
 ---
 
-## 📈 Final Model Performance (After SMOTE)
+## Final Model Performance (After SMOTE)
 
 The results after balancing the data show a massive improvement, with the Random Forest model achieving a perfect score on the test set.
 
@@ -60,7 +60,7 @@ The results confirmed the model's exceptional robustness:
 
 A high average score with a very low standard deviation proves that the model is **consistently accurate and reliable**, solidifying its readiness for a real-world application.
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Category                | Tools / Libraries                                  |
 | ----------------------- | -------------------------------------------------- |
@@ -73,7 +73,7 @@ A high average score with a very low standard deviation proves that the model is
 
 ---
 
-## 🔧 Future Enhancements
+## Future Enhancements
 
 -   **Hyperparameter Tuning:** Use `GridSearchCV` or `RandomizedSearchCV` to further optimize the Random Forest model.
 -   **Explore Other Models:** Experiment with gradient boosting models like XGBoost or LightGBM, which often perform well on tabular data.
