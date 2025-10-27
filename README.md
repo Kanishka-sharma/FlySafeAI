@@ -1,4 +1,4 @@
-# FLYSAFEAI — Drone Warning Level Prediction Using Machine Learning
+# FLYSAFEAI - Drone Warning Level Prediction Using Machine Learning
 
 > *Turning flight data into safety intelligence by solving real-world data challenges.*
 
